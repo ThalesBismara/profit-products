@@ -1,6 +1,5 @@
 
-
-produto = (input("Escolha o produto:Digite: 1 -Cone Trufado,2 -Brownie,3- Barra Recheada,4- Cascone,Capuccino,5- Bolo,6- Pudim,7- Copo da Felicidade:  "))
+produto = (input("Escolha o produto:Digite: 1 -Cone Trufado,2 -Brownie,3- Barra Recheada,4- Cascone,5- Bolo,6- Pudim,7- Copo da Felicidade:  "))
 
 
 if produto == "1":
@@ -18,16 +17,13 @@ if produto == "1":
 
     barra_chocolate = float(input("Qual o valor da Barra de Chocolate: "))
     qntd_choco = int(input("Quantos GRAMAS tem a barra? "))
-    total_choco = barra_chocolate / qntd_choco
-
-    qntd_choco_casca = int(input("Qual a quantidade de CHOCOLATE você usa para banhar a casquinha? "))
-    custo_chocolate = total_choco * qntd_choco_casca
+    total_choco = (barra_chocolate / qntd_choco) * 20
 
     selo = float(input("Insira o valor do selo: "))
     qntd_selo = int(input("Insira a quantidade: "))
     selo_total = selo / qntd_selo
 
-    custo_casquinha = casca_total + custo_chocolate + emba_total + selo_total
+    custo_casquinha = casca_total +  emba_total + fechinho_total + total_choco + selo_total
 
     print(f"O custo por casquinha banhada é de: R${custo_casquinha:.2f}")
 
@@ -42,112 +38,189 @@ if produto == "1":
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
 
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
+
         leite_po = float(input("Insira o valor do leite em pó: "))
         peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        total_leite_po = (leite_po / peso_leite_po) * 400
 
-        valor_por_grama_leite_po = leite_po / peso_leite_po
-        total_leite_po = valor_por_grama_leite_po * 400
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_uni = (total_ninho / 1000) * 80 
+        custo_unidade_reche = custo_por_uni + custo_casquinha
 
-        total_ninho = total_condensado + total_creme + total_leite_po
-        custo_por_unidade = (total_ninho / 1000) * 70 + custo_casquinha
-
-        print(f"Custo do Leite Condensado: R${total_condensado:.2f}")
-        print(f"Custo do Creme de Leite: R${total_creme:.2f}")
-        print(f"Custo do Leite em Pó: R${total_leite_po:.2f}")
-        print(f"Custo total do Ninho: R${total_ninho:.2f}")
-        print(f"Custo total de produção Por UNIDADE recheada: R${custo_por_unidade:.2f}")
+        print(f"O custo por kilo é de: R${total_ninho}")
+        print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
     elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
 
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
 
-        valor_por_grama_cacau = cacau_po / qntd_cacau
+       total_brigadeiro = total_condensado + total_creme + total_cacau
 
-        qntd_cacau_usado = int(input("Insira quantos gramas de cacau são utilizados na receita: "))
+       custo_por_uni = (total_brigadeiro / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
 
-        total_cacau = valor_por_grama_cacau * qntd_cacau_usado
-
-        total_brigadeiro = total_condensado + total_creme + total_cacau
-
-        print(f"Custo do Leite Condensado: R${total_condensado:.2f}")
-        print(f"Custo do Creme de Leite: R${total_creme:.2f}")
-        print(f"Custo do Cacau em Pó: R${total_cacau:.2f}")
-        print(f"Custo total do Brigadeiro: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
 
     elif sabor == "3":
-        print("Kinder Bueno")
+       print("Kinder Bueno, a quantidade de ingredientes será para um KILO de recheio!")
 
-        
+       avela = float(input("Insira o valor da Pasta de Avelã: "))
+       peso_avela = int(input("Insira quantos gramas tem o pacote: "))
+       total_avela = (avela / peso_avela) * 450
 
-        avela = float(input("Insira o valor da Pasta de Avelã: "))
-        peso_avela = int(input("Insira quantos gramas tem o pacote: "))
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
-        valor_por_grama_avela = avela / peso_avela
-        custo_450g_avela = valor_por_grama_avela * 450
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
 
-        
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 750
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       total_kinder_bueno = total_avela + total_condensado + total_creme + total_leite_po
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+       custo_por_uni = (total_kinder_bueno / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
 
-        leite_po = float(input("Insira o valor do leite em pó: "))
-        peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
-
-        valor_por_grama_leite_po = leite_po / peso_leite_po
-        total_leite_po = valor_por_grama_leite_po * 750
-
-        custo_750g_ninho = total_condensado + total_creme + total_leite_po
-
-        
-
-        custo_kinder_bueno = custo_450g_avela + custo_750g_ninho
-
-        print(f"Custo dos 450g de Avelã: R${custo_450g_avela:.2f}")
-        print(f"Custo dos 750g de Ninho: R${custo_750g_ninho:.2f}")
-        print(f"Custo total do recheio Kinder Bueno: R${custo_kinder_bueno:.2f}")
+       print(f"O custo por kilo é de: R${total_kinder_bueno:.2f}")
+       print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
     elif sabor == "4":
-        print("Você escolheu Ferrero Rochet, o valor do custo será informado em KILOS")
+       print("Ferrero Rocher, a quantidade de ingredientes será para um KILO de recheio!")
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        ferrero = float(input("Insira o valor do Kinder: "))
-        amemdoim = float(input("Insira o valor do Amendoim Triturado: "))
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       ferrero = float(input("Insira o valor do Ferrero Rocher: "))
+       qntd_ferrero = int(input("Insira quantas unidades tem a embalagem: "))
+       total_ferrero = (ferrero / qntd_ferrero) * 2
+
+       amendoim = float(input("Insira o valor do amendoim triturado: "))
+       qntd_amendoim = int(input("Quantos gramas tem o pacote: "))
+       total_amendoim = (amendoim / qntd_amendoim) * 60
+
+       total_ferrero_rocher = total_condensado + total_creme + total_ferrero + total_amendoim
+
+       custo_por_uni = (total_ferrero_rocher / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"O custo por kilo é de: R${total_ferrero_rocher:.2f}")
+       print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
     elif sabor == "5":
-        print("Você escolheu Duo, o valor do custo será informado em KILOS")
+       print("Duo, a quantidade de ingredientes será para um KILO de recheio!")
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
+    # Recheio de Ninho
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_ninho = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_ninho = creme_leite * 3
+
+       manteiga = float(input("Insira o valor da manteiga: "))
+       peso_manteiga = int(input("Insira o peso em gramas: "))
+       total_manteiga = (manteiga / peso_manteiga) * 30
+
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 400
+
+       total_ninho = (
+        total_condensado_ninho
+        + total_creme_ninho
+        + total_manteiga
+        + total_leite_po )
+
+    # Recheio de Brigadeiro
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_brigadeiro = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_brigadeiro = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do cacau em pó 50%: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = (
+        total_condensado_brigadeiro
+        + total_creme_brigadeiro
+        + total_cacau
+    )
+
+    # Custo do recheio Duo
+       custo_duo_por_kilo = (total_ninho + total_brigadeiro) / 2
+
+       custo_por_uni = (custo_duo_por_kilo / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"Custo do Ninho por receita: R${total_ninho:.2f}")
+       print(f"Custo do Brigadeiro por receita: R${total_brigadeiro:.2f}")
+       print(f"Custo do recheio Duo por kilo: R${custo_duo_por_kilo:.2f}")
+       print(f"Custo por casquinha banhada e recheada: R${custo_unidade_reche:.2f}")
 
     elif sabor == "6":
         print("Você escolheu Nutella, o valor do custo será informado em KILOS")
 
         nutella = float(input("Insira o valor do Creme de Avelã: "))
+        qntd_nutella = int(input("Insira a quantidade: "))
+        total_nutella = (nutella / qntd_nutella) * 60
+
+        custo_unidade_reche = total_nutella + custo_casquinha 
 
     else:
         print("Digite um Produto Válido")
 
-
 elif produto == "2":
 
-    acucar = float(input("Valor do Kilo do açúcar - OBS: Para fazer 10 Brownies são utilizados 275 gramas: "))
+    preco_acucar = float(input("Valor do Kilo do açúcar:  "))
+    peso_acucar = float(input("Peso no saco do açúcar em gramas: "))
+    preco_por_grama = preco_acucar / peso_acucar
+    total_acucar = preco_por_grama * 275
+
+
     manteiga = float(input("Valor da Manteiga sem sal - OBS: Para fazer 10 Brownies são utilizados 100 gramas: "))
-    ovos = float(input("Qual o valor da bandeja com 20 ovos? OBS: Para fazer 10 Brownies são utilizados 3 ovos: "))
-    farinha = float(input("Insira o valor do KILO da Farinha - OBS: Para fazer 10 Brownies são utilizados 190 gramas: "))
-    cacau_po1 = float(input("Insira o valor do Cacau em Pó 50%: "))
+    total_manteiga = manteiga / 2
+
+    ovos = float(input("Qual o valor da bandeja de ovos? OBS: "))
+    qntd_ovos = float(input("Quantidade de Ovos na bandeja: "))
+    uni_ovos = ovos / qntd_ovos
+    total_ovos = uni_ovos * 3
+
+
+    farinha = float(input("Insira o valor da Farinha: "))
+    qntd_farinha = float(input("Quantos gramas tem o pacote de farinha?: "))
+    preco_farinha = farinha / qntd_farinha 
+    total_farinha = preco_farinha * 190
+
+    cacau_po = float(input("Insira o valor do Cacau em Pó 50%: "))
+    qntd_cacau = float(input("Insira quantos gramas: "))
+    preco_cacau = cacau_po / qntd_cacau
+    total_cacau = preco_cacau * 100
+
     embalagem = float(input("Insira o valor da embalagem: "))
+    qntd_emba = int(input("Quantas embalagens: "))
+    unid_emba = embalagem / qntd_emba
+
+    preco_brownie = (total_acucar + total_manteiga + total_ovos + total_farinha + total_cacau + unid_emba) / 10
+    print(preco_brownie)
 
     sabor = input("Qual sabor do Brownie? 1 - Ninho, 2 - Brigadeiro, 3 - Duo: ")
 
@@ -160,37 +233,43 @@ elif produto == "2":
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
 
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
+
         leite_po = float(input("Insira o valor do leite em pó: "))
         peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
 
         valor_por_grama_leite_po = leite_po / peso_leite_po
-        total_leite_po = valor_por_grama_leite_po * 750
+        total_leite_po = valor_por_grama_leite_po * 400
 
-        total_ninho = total_condensado + total_creme + total_leite_po
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_kilo = (total_ninho / 1000) * 80 
+        custo_por_unidade = (custo_por_kilo / 80) + preco_brownie
 
-        print(f"Custo total do Ninho: R${total_ninho:.2f}")
+
+        print(f"Custo total de produção Por UNIDADE recheada: R${custo_por_unidade:.2f}")
 
     elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
 
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
 
-        valor_por_grama_cacau = cacau_po / qntd_cacau
+       total_brigadeiro = total_condensado + total_creme + total_cacau
 
-        qntd_cacau_usado = int(input("Insira quantos gramas de cacau são utilizados na receita: "))
+       custo_por_uni = (total_brigadeiro / 1000) * 80
+       custo_unidade_reche = custo_por_uni + preco_brownie
 
-        total_cacau = valor_por_grama_cacau * qntd_cacau_usado
-
-        total_brigadeiro = total_condensado + total_creme + total_cacau
-
-        print(f"Custo total do Brigadeiro: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
 
     elif sabor == "3":
         print("Você escolheu Duo, o valor do custo será informado em KILOS")
@@ -202,42 +281,124 @@ elif produto == "2":
         print("Digite um Produto Válido")
       
 elif produto == "3":
-     barra_chocolate = float(input("Qual o valor da Barra de Chocolate de um Kilo? - 130 gramas por Barra "))
-     papel_manteiga = float(input(" Qual o valor do Papel Manteiga com 30 Unidades: "))
-     embalagem_plastico = float(input(" Insira o valor da Embalagem de plástico com 100: "))
-     fechinho = float(input("Insira o valor do fechinho com 100 unidades: "))
+     barra_chocolate = float(input("Qual o valor da Barra de Chocolate de um Kilo?: "))
+     qntd_barra = int(input("Qual o peso?: "))
+     peso_barra = barra_chocolate / qntd_barra
+     total_barra = peso_barra * 120
+
+     papel_manteiga = float(input(" Qual o valor do Papel Manteiga: "))
+     qntd_papel = int(input("Qual a quantidade?: "))
+     total_papel_manteiga = (papel_manteiga / qntd_papel) / 8
+
+     embalagem_plastico = float(input(" Insira o valor da Embalagem: "))
+     qntd_embalagem = int(input("Quantos na embalagem?: "))
+     total_embalagem = embalagem_plastico / qntd_embalagem
+
+     fechinho = float(input("Insira o valor do fechinho: "))
+     qntd_fechinho = int(input("Qual a quantidade: "))
+     total_fechinho = fechinho / qntd_fechinho
+
+     barra = total_barra + total_papel_manteiga + total_embalagem + total_fechinho
+     print(barra)
 
      sabor = input("Qual sabor do Barra Recheada?1 -Ninho,2 -Brigadeiro,3 -Duo: ")
 
      if sabor == "1":
-        print("Ninho, a quantidade de ingredientes será para um KILO de recheio! ")
+        print("Ninho, a quantidade de ingredientes será para um KILO de recheio!")
+
         leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
         total_condensado = leite_condensado * 3
 
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
 
-        leite_po = float(input("Insira o valor do leite em pó 400 gramas: "))
-        total_ninho = leite_condensado + creme_leite + leite_po
-        print(total_ninho)  
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
+
+        leite_po = float(input("Insira o valor do leite em pó: "))
+        peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        total_leite_po = (leite_po / peso_leite_po) * 400
+
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_uni = (total_ninho / 1000) * 80 
+        custo_unidade_reche = custo_por_uni + barra
+
+        print(f"O custo por kilo é de: R${total_ninho}")
+        print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
      elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio! ")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas o pacote de cacau em pó 50%: "))
-        total_cacau = cacau_po / qntd_cacau
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = total_condensado + total_creme + total_cacau
+
+       custo_por_uni = (total_brigadeiro / 1000) * 130
+       custo_unidade_reche = custo_por_uni + barra
+
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
 
      elif sabor == "3":
-        print(" Voce escolheu Duo, o valor do custo será informado em KILOS")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
+       print("Duo, a quantidade de ingredientes será para um KILO de recheio!")
 
+    # Recheio de Ninho
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_ninho = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_ninho = creme_leite * 3
+
+       manteiga = float(input("Insira o valor da manteiga: "))
+       peso_manteiga = int(input("Insira o peso em gramas: "))
+       total_manteiga = (manteiga / peso_manteiga) * 30
+
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 400
+
+       total_ninho = (
+        total_condensado_ninho
+        + total_creme_ninho
+        + total_manteiga
+        + total_leite_po )
+
+    # Recheio de Brigadeiro
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_brigadeiro = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_brigadeiro = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do cacau em pó 50%: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = (
+        total_condensado_brigadeiro
+        + total_creme_brigadeiro
+        + total_cacau
+    )
+
+    # Custo do recheio Duo
+       custo_duo_por_kilo = (total_ninho + total_brigadeiro) / 2
+
+       custo_por_uni = (custo_duo_por_kilo / 1000) * 130
+       custo_unidade_reche = custo_por_uni + barra
+
+       print(f"Custo do Ninho por receita: R${total_ninho:.2f}")
+       print(f"Custo do Brigadeiro por receita: R${total_brigadeiro:.2f}")
+       print(f"Custo do recheio Duo por kilo: R${custo_duo_por_kilo:.2f}")
+       print(f"Custo por casquinha banhada e recheada: R${custo_unidade_reche:.2f}")
      else:
         print("Digite um Produto Válido")
      
@@ -256,7 +417,7 @@ elif produto == "4":
 
    barra_chocolate = float(input("Qual o valor da Barra de Chocolate: "))
    qntd_choco = int(input(" Quantos GRAMAS tem a barra?"))
-   total_choco = qntd_choco / barra_chocolate
+   total_choco =  barra_chocolate / qntd_choco
 
    qntd_choco_casca = int(input("Qual a quantidade de CHOCOLATE você usa para banhar a casquinha? "))
    custo_chocolate = total_choco * qntd_choco_casca
@@ -270,98 +431,260 @@ elif produto == "4":
    sabor = input("Qual sabor do Cascone ? 1 -Ninho,2 -Brigadeiro,3 -Kinder Bueno,4- Ferrero Rochet,5 -Duo,6 -Nutella: ")
 
    if sabor == "1":
-        print("Ninho, a quantidade de ingredientes será para um KILO de recheio! ")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+        print("Ninho, a quantidade de ingredientes será para um KILO de recheio!")
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
-
-        leite_po = float(input("Insira o valor do leite em pó 400 gramas: "))
-        total_ninho = leite_condensado + creme_leite + leite_po
-        print(total_ninho)  
-        
-   elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio! ")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
-
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
-
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas o pacote de cacau em pó 50%: "))
-        total_cacau = cacau_po / qntd_cacau
-
-   elif sabor == "3":
-        print("Kinder Bueno")
-
-        avela = float(input("Insira o valor da Pasta de Avelã: "))
-        peso_avela = int(input("Insira quantos gramas tem o pacote: "))
-
-        valor_por_grama_avela = avela / peso_avela
-        custo_450g_avela = valor_por_grama_avela * 450   
+        print("Ninho, a quantidade de ingredientes será para um KILO de recheio!")
 
         leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
         total_condensado = leite_condensado * 3
 
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
+
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
 
         leite_po = float(input("Insira o valor do leite em pó: "))
         peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        total_leite_po = (leite_po / peso_leite_po) * 400
 
-        valor_por_grama_leite_po = leite_po / peso_leite_po
-        total_leite_po = valor_por_grama_leite_po * 750
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_uni = (total_ninho / 1000) * 130 
+        custo_unidade_reche = custo_por_uni + custo_casquinha
 
-        custo_750g_ninho = total_condensado + total_creme + total_leite_po    
+        print(f"O custo por kilo é de: R${total_ninho}")
+        print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
-        custo_kinder_bueno = custo_450g_avela + custo_750g_ninho
+        
+   elif sabor == "2":
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
 
-        print(f"Custo dos 450g de Avelã: R${custo_450g_avela:.2f}")
-        print(f"Custo dos 750g de Ninho: R${custo_750g_ninho:.2f}")
-        print(f"Custo total do recheio Kinder Bueno: R${custo_kinder_bueno:.2f}")
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = total_condensado + total_creme + total_cacau
+
+       custo_por_uni = (total_brigadeiro / 1000) * 130
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
+
+   elif sabor == "3":
+       print("Kinder Bueno, a quantidade de ingredientes será para um KILO de recheio!")
+
+       avela = float(input("Insira o valor da Pasta de Avelã: "))
+       peso_avela = int(input("Insira quantos gramas tem o pacote: "))
+       total_avela = (avela / peso_avela) * 450
+
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 750
+
+       total_kinder_bueno = total_avela + total_condensado + total_creme + total_leite_po
+
+       custo_por_uni = (total_kinder_bueno / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"O custo por kilo é de: R${total_kinder_bueno:.2f}")
+       print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
+ 
    elif sabor == "4":
-        print(" Voce escolheu Ferrero Rochet, o valor do custo será informado em KILOS")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        ferrero = float(input("Insira o valor do Kinder: "))   
-        amemdoim = float(input("Insira o valor do Amemdoim Triturado: "))
+       print("Ferrero Rocher, a quantidade de ingredientes será para um KILO de recheio!")
+
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       ferrero = float(input("Insira o valor do Ferrero Rocher: "))
+       qntd_ferrero = int(input("Insira quantas unidades tem a embalagem: "))
+       total_ferrero = (ferrero / qntd_ferrero) * 2
+
+       amendoim = float(input("Insira o valor do amendoim triturado: "))
+       qntd_amendoim = int(input("Quantos gramas tem o pacote: "))
+       total_amendoim = (amendoim / qntd_amendoim) * 60
+
+       total_ferrero_rocher = total_condensado + total_creme + total_ferrero + total_amendoim
+
+       custo_por_uni = (total_ferrero_rocher / 1000) * 80
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"O custo por kilo é de: R${total_ferrero_rocher:.2f}")
+       print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
+
 
    elif sabor == "5":
-        print(" Voce escolheu Duo, o valor do custo será informado em KILOS")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
+       print("Duo, a quantidade de ingredientes será para um KILO de recheio!")
+
+    # Recheio de Ninho
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_ninho = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_ninho = creme_leite * 3
+
+       manteiga = float(input("Insira o valor da manteiga: "))
+       peso_manteiga = int(input("Insira o peso em gramas: "))
+       total_manteiga = (manteiga / peso_manteiga) * 30
+
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 400
+
+       total_ninho = (
+        total_condensado_ninho
+        + total_creme_ninho
+        + total_manteiga
+        + total_leite_po )
+
+    # Recheio de Brigadeiro
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_brigadeiro = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_brigadeiro = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do cacau em pó 50%: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = (
+        total_condensado_brigadeiro
+        + total_creme_brigadeiro
+        + total_cacau
+    )
+
+    # Custo do recheio Duo
+       custo_duo_por_kilo = (total_ninho + total_brigadeiro) / 2
+
+       custo_por_uni = (custo_duo_por_kilo / 1000) * 130
+       custo_unidade_reche = custo_por_uni + custo_casquinha
+
+       print(f"Custo do Ninho por receita: R${total_ninho:.2f}")
+       print(f"Custo do Brigadeiro por receita: R${total_brigadeiro:.2f}")
+       print(f"Custo do recheio Duo por kilo: R${custo_duo_por_kilo:.2f}")
+       print(f"Custo por casquinha banhada e recheada: R${custo_unidade_reche:.2f}")
 
    elif sabor == "6":
-        print(" Voce escolheu Nutella, o valor do custo será informado em KILOS")
-        nutella = float(input("Insira o valor do Creme de Avelã: ")) 
+        print("Você escolheu Nutella, o valor do custo será informado em KILOS")
+
+        nutella = float(input("Insira o valor do Creme de Avelã: "))
+        qntd_nutella = int(input("Insira a quantidade: "))
+        total_nutella = (nutella / qntd_nutella) * 60
+
+        custo_unidade_reche = total_nutella + custo_casquinha 
+
    else:
         print("Digite um Produto Válido") 
 
 elif produto == "5":
      ovo = float(input("Insira o valor da bandeja de ovos com 20: "))
+     qntd_ovos = int(input("Insira a quantidade de ovos na bandeja: "))
+     total_ovos = (ovo / qntd_ovos) * 3
+
      acucar = float(input("Insira o valor do kilo do açúcar: "))
+     qntd_acucar = int(input("Quantos gramas tem o pacote de açúcar?: "))
+     total_acucar = acucar / qntd_acucar
+
      cacau_po = float(input("Insira o valor do  Cacau em Pó 50%: "))
+     qntd_cacau = int(input("Quantos gramas tem o pacote?: "))
+     total_cacau = cacau_po / qntd_cacau
+
      fermento = float(input(" Insira o valor do Fermento"))
+     qntd_fermento = int(input("Quantos gramas tem o fermento?: "))
+     total_fermento = (fermento / qntd_fermento) * 40
+
      pote = float(input("Insira o valor dos Potes: "))
+     qntd_potes = int(input("Quantidade de potes: "))
+     total_potes = pote / qntd_potes
+
+     total_bolo = total_ovos + total_acucar + total_cacau + total_fermento + total_potes
+
      sabor = input("Qual sabor do Bolo? 1 -Ninho,2 -Brigadeiro,3 -Duo: ")
 
      if sabor == "1":
-        print("Ninho, a quantidade de ingredientes será para um KILO de recheio! ")
+        print("Ninho, a quantidade de ingredientes será para um KILO de recheio!")
+
         leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
         total_condensado = leite_condensado * 3
 
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
 
-        leite_po = float(input("Insira o valor do leite em pó 400 gramas: "))
-        total_ninho = leite_condensado + creme_leite + leite_po
-        print(total_ninho)  
-        
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
+
+        leite_po = float(input("Insira o valor do leite em pó: "))
+        peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        total_leite_po = (leite_po / peso_leite_po) * 400
+
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_uni = (total_ninho / 1000) * 80 
+        custo_unidade_reche = custo_por_uni + total_bolo
+
+        print(f"O custo por kilo é de: R${total_ninho}")
+        print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
+
      elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio! ")
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
+
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = total_condensado + total_creme + total_cacau
+
+       custo_por_uni = (total_brigadeiro / 1000) * 80
+       custo_unidade_reche = custo_por_uni + total_bolo
+
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
+
+     elif sabor == "3":
+        print("Você escolheu Duo, o valor do custo será informado em KILOS")
+
+        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+        total_condensado = leite_condensado * 3
+
+        creme_leite = float(input("Insira o valor do creme de leite: "))
+        total_creme = creme_leite * 3
+
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
+
+        leite_po = float(input("Insira o valor do leite em pó: "))
+        peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        valor_por_grama_leite_po = leite_po / peso_leite_po
+        total_leite_po = valor_por_grama_leite_po * 400
+
+        total_ninho = total_condensado + total_creme + total_leite_po
+        total_unidade = (total_ninho / 1000) * 40
+
+
         leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
         total_condensado = leite_condensado * 3
 
@@ -369,115 +692,206 @@ elif produto == "5":
         total_creme = creme_leite * 3
 
         cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas o pacote de cacau em pó 50%: "))
-        total_cacau = cacau_po / qntd_cacau
+        qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+        valor_por_grama_cacau = cacau_po / qntd_cacau
+        total_cacau = valor_por_grama_cacau * 80
 
-     elif sabor == "3":
-        print(" Voce escolheu Duo, o valor do custo será informado em KILOS")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        creme_leite = float(input("Insira o valor do creme de leite: "))
+        total_brigadeiro = total_condensado + total_creme + total_cacau + custo_casquinha
+        custo_por_kilo = (total_brigadeiro / 1000) * 80
+        custo_por_unidade = (custo_por_kilo / 80) + total_bolo
 
+
+        duo = (total_brigadeiro + total_ninho) / 2
+        total_duo = duo * 80
      else:
         print("Digite um Produto Válido")
 
 elif produto == "6": #pudim
      
      leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-     ovo = float(input("Insira o valor da bandeja de ovos com 20: "))
-     acucar = float(input("Insira o valor do kilo do açúcar: "))
-     pote = float(input("Insira o valor dos Potes: "))
 
+     ovo = float(input("Insira o valor da bandeja de ovos: "))
+     qntd_ovo = int(input("Quantidade de Ovos: "))
+     total_ovos = (ovo / qntd_ovo) * 1
+
+     acucar = float(input("Insira o valor do kilo do açúcar: "))
+     qntd_acucar = int(input("Quantos gramas tem o pacote: "))
+     total_acucar = (acucar / qntd_acucar) * 190
+
+     leite = float(input("Insira o valor do leite: "))
+     total_leite = (leite / 1000) * 395
+
+
+     pote = float(input("Insira o valor dos Potes: "))
+     qntd_pote = int(input("Quantos potes vem na embalagem?: "))
+     total_pote = pote / qntd_pote
+
+     total_pudim = total_ovos + total_acucar + total_pote + total_leite  + leite_condensado
+     print(total_pudim)
 
 elif produto == "7":
-     pote = float(input("Insira o valor dos Potes: "))
+     
+     copo = float(input("Insira o valor dos Potes: "))
+     copo_qntd = int(input("Insira a quantidade: "))
+     total_copo = copo / copo_qntd
+
+     selo = float(input("Insira o valor dos selos: "))
+     qntd_selo = int(input("Insira a quantidade: "))
+     total_selos = selo / qntd_selo
+
+     total = total_selos + total_copo
      
      sabor = input("Qual sabor do Copo da Felicidade? 1 -Ninho,2 -Brigadeiro,3 -Kinder Bueno,4- Ferrero Rochet,5 -Duo,6 -Nutella: ")
 
      if sabor == "1":
-        print("Ninho, a quantidade de ingredientes será para um KILO de recheio! ")
+        print("Ninho, a quantidade de ingredientes será para um KILO de recheio!")
+
         leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
         total_condensado = leite_condensado * 3
 
         creme_leite = float(input("Insira o valor do creme de leite: "))
         total_creme = creme_leite * 3
 
-        leite_po = float(input("Insira o valor do leite em pó 400 gramas: "))
-        total_ninho = leite_condensado + creme_leite + leite_po
-        print(total_ninho)  
-
-     elif sabor == "2":
-        print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio! ")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
-
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
-
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas o pacote de cacau em pó 50%: "))
-        total_cacau = cacau_po / qntd_cacau
-
-     elif sabor == "3":
-        print("Kinder Bueno")
-
-        avela = float(input("Insira o valor da Pasta de Avelã: "))
-        peso_avela = int(input("Insira quantos gramas tem o pacote: "))
-
-        valor_por_grama_avela = avela / peso_avela
-        custo_450g_avela = valor_por_grama_avela * 450
-        
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
-
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+        manteiga = float(input("Insira o valor da manteiga: "))
+        peso_manteiga = int(input("Insira o peso: "))
+        total_manteiga = (manteiga / peso_manteiga) * 30
 
         leite_po = float(input("Insira o valor do leite em pó: "))
         peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+        total_leite_po = (leite_po / peso_leite_po) * 400
 
-        valor_por_grama_leite_po = leite_po / peso_leite_po
-        total_leite_po = valor_por_grama_leite_po * 750
+        total_ninho = total_condensado + total_creme + total_leite_po + total_manteiga
+        custo_por_uni = (total_ninho / 1000) * 80 
+        custo_unidade_reche = custo_por_uni + total
 
-        custo_750g_ninho = total_condensado + total_creme + total_leite_po     
+        print(f"O custo por kilo é de: R${total_ninho}")
+        print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
 
-        custo_kinder_bueno = custo_450g_avela + custo_750g_ninho
+     elif sabor == "2":
+       print("Brigadeiro, a quantidade de ingredientes será para um KILO de recheio!")
 
-        print(f"Custo dos 450g de Avelã: R${custo_450g_avela:.2f}")
-        print(f"Custo dos 750g de Ninho: R${custo_750g_ninho:.2f}")
-        print(f"Custo total do recheio Kinder Bueno: R${custo_kinder_bueno:.2f}")
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
 
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do Cacau em Pó: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote de cacau em pó 50%: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = total_condensado + total_creme + total_cacau
+
+       custo_por_uni = (total_brigadeiro / 1000) * 130
+       custo_unidade_reche = custo_por_uni + total
+
+       print(f"Custo total do Brigadeiro por kilo: R${total_brigadeiro:.2f}")
+       print(f"Custo total do Brigadeiro por unidade banhada e recheada: R${custo_unidade_reche:.2f}")
+
+     elif sabor == "3":
+       print("Kinder Bueno, a quantidade de ingredientes será para um KILO de recheio!")
+
+       avela = float(input("Insira o valor da Pasta de Avelã: "))
+       peso_avela = int(input("Insira quantos gramas tem o pacote: "))
+       total_avela = (avela / peso_avela) * 450
+
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme = creme_leite * 3
+
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 750
+
+       total_kinder_bueno = total_avela + total_condensado + total_creme + total_leite_po
+
+       custo_por_uni = (total_kinder_bueno / 1000) * 80
+       custo_unidade_reche = custo_por_uni + total
+
+       print(f"O custo por kilo é de: R${total_kinder_bueno:.2f}")
+       print(f"O custo por casquinha banhada e recheada é de: R${custo_unidade_reche:.2f}")
+
+        
      elif sabor == "4":
-        print(" Voce escolheu Ferrero Rocher")     
+        print("Você escolheu Ferrero Rochet, o valor do custo será informado em KILOS")
+
+        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+        total_condensado = leite_condensado * 3
+
+        creme_leite = float(input("Insira o valor do creme de leite: "))
+        total_creme = creme_leite * 3
+
+        ferrero = float(input("Insira o valor do Ferro: "))
+        qntd_ferrero = int(input("Insira quantas unidades: "))
+        total_ferrero = (ferrero / qntd_ferrero) / 2
+
+        amendoim = float(input("Insira o valor do Amendoim Triturado: "))
+        qntd_amendoim = int(input("Quantos Gramas tem o pacote: "))
+        total_amendoim = (amendoim / qntd_amendoim) * 60
+
+        custo_ferrero = total + total_condensado + total_creme + total_ferrero + total_amendoim
+        print(f"Custo total do Brigadeiro: R${custo_ferrero:.2f}") 
 
      elif sabor == "5":
-        print("Duo, a quantidade de ingredientes será para um KILO de recheio! ")
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       print("Duo, a quantidade de ingredientes será para um KILO de recheio!")
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+    # Recheio de Ninho
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_ninho = leite_condensado * 3
 
-        leite_po = float(input("Insira o valor do leite em pó 400 gramas: "))
-        total_ninho = leite_condensado + creme_leite + leite_po
-        print(total_ninho) 
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_ninho = creme_leite * 3
 
-        leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
-        total_condensado = leite_condensado * 3
+       manteiga = float(input("Insira o valor da manteiga: "))
+       peso_manteiga = int(input("Insira o peso em gramas: "))
+       total_manteiga = (manteiga / peso_manteiga) * 30
 
-        creme_leite = float(input("Insira o valor do creme de leite: "))
-        total_creme = creme_leite * 3
+       leite_po = float(input("Insira o valor do leite em pó: "))
+       peso_leite_po = int(input("Insira quantos gramas tem o pacote: "))
+       total_leite_po = (leite_po / peso_leite_po) * 400
 
-        cacau_po = float(input("Insira o valor do Cacau em Pó: "))
-        qntd_cacau = int(input("Insira quantos gramas o pacote de cacau em pó 50%: "))
-        total_cacau = cacau_po / qntd_cacau
- 
+       total_ninho = (
+        total_condensado_ninho
+        + total_creme_ninho
+        + total_manteiga
+        + total_leite_po )
+
+    # Recheio de Brigadeiro
+       leite_condensado = float(input("Insira o valor do leite condensado de 372mls: "))
+       total_condensado_brigadeiro = leite_condensado * 3
+
+       creme_leite = float(input("Insira o valor do creme de leite: "))
+       total_creme_brigadeiro = creme_leite * 3
+
+       cacau_po = float(input("Insira o valor do cacau em pó 50%: "))
+       qntd_cacau = int(input("Insira quantos gramas tem o pacote: "))
+       total_cacau = (cacau_po / qntd_cacau) * 80
+
+       total_brigadeiro = (
+        total_condensado_brigadeiro
+        + total_creme_brigadeiro
+        + total_cacau
+    )
+
+    # Custo do recheio Duo
+       custo_duo_por_kilo = (total_ninho + total_brigadeiro) / 2
+
+       custo_por_uni = (custo_duo_por_kilo / 1000) * 80
+       custo_unidade_reche = custo_por_uni + total
+
+       print(f"Custo do Ninho por receita: R${total_ninho:.2f}")
+       print(f"Custo do Brigadeiro por receita: R${total_brigadeiro:.2f}")
+       print(f"Custo do recheio Duo por kilo: R${custo_duo_por_kilo:.2f}")
+       print(f"Custo por casquinha banhada e recheada: R${custo_unidade_reche:.2f}")
 
      elif sabor == "6":
-        avela = float(input("Insira o valor da Pasta de Avelã: "))
-        peso_avela = int(input("Insira quantos gramas tem o pacote: "))
+        print("Você escolheu Nutella, o valor do custo será informado em KILOS")
 
-        valor_por_grama_avela = avela / peso_avela
-        custo_avela = valor_por_grama_avela * 80
+        nutella = float(input("Insira o valor do Creme de Avelã: "))
+        qntd_nutella = int(input("Insira a quantidade: "))
+        total_nutella = (nutella / qntd_nutella) * 130
 
      else:
         print("Digite um Produto Válido")
